@@ -78,9 +78,10 @@ defmodule Constable.User do
           else
             [email: "must be a member of #{permitted_email_domain()}"]
           end
+
         _ ->
           [email: "invalid email address"]
-        end
+      end
     end)
   end
 
