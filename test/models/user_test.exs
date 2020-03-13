@@ -3,8 +3,8 @@ defmodule Constable.UserTest do
 
   alias Constable.User
 
-  def permitted_email_domain, do: Application.fetch_env!(:constable, :permitted_email_domain)
-  def valid_email, do: "foo@#{permitted_email_domain()}"
+  defp permitted_email_domain, do: Application.fetch_env!(:constable, :permitted_email_domain)
+  defp valid_email, do: "foo@#{permitted_email_domain()}"
 
   test "settings_changeset validates length of name" do
     changeset = User.settings_changeset(%User{}, %{name: "ab"})

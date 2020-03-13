@@ -10,7 +10,7 @@ defmodule ConstableWeb.AuthController do
     UserInterest
   }
 
-  def permitted_email_domain, do: Application.fetch_env!(:constable, :permitted_email_domain)
+  defp permitted_email_domain, do: Application.fetch_env!(:constable, :permitted_email_domain)
 
   @one_year_in_seconds 365 * 24 * 60 * 60
 

@@ -10,7 +10,7 @@ defmodule Constable.User do
     end
   end
 
-  def permitted_email_domain, do: Application.fetch_env!(:constable, :permitted_email_domain)
+  defp permitted_email_domain, do: Application.fetch_env!(:constable, :permitted_email_domain)
 
   schema "users" do
     field :email
@@ -71,11 +71,16 @@ defmodule Constable.User do
   defp require_permitted_email_domain(changeset) do
     changeset
     |> validate_change(:email, fn :email, value ->
-      if String.split(value, "@") == permitted_email_domain() do
-        []
-      else
-        [email: "must be a member of #{permitted_email_domain()}"]
-      end
+      case String.split(value, "@") do
+        [_, domain] ->
+          if domain == permitted_email_domain() do
+            []
+          else
+            [email: "must be a member of #{permitted_email_domain()}"]
+          end
+        _ ->
+          [email: "invalid email address"]
+        end
     end)
   end
 
