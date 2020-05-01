@@ -61,7 +61,6 @@ defmodule Constable.MixProject do
       {:neuron, "~> 4.1.0"},
       {:oauth2, "~> 2.0"},
       {:pact, "~> 0.2.0"},
-      {:paginator, "~> 0.6"},
       {:phoenix, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.1.0"},
